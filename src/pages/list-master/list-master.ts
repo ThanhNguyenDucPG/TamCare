@@ -1,3 +1,4 @@
+import { JobInformationProvider } from './../../providers/job-information/job-information';
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
@@ -10,18 +11,25 @@ import { Items } from '../../providers/providers';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  currentItems: Item[];
+  currentJobs: Item[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
-    this.currentItems = this.items.query();
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController,
+    public jobInf: JobInformationProvider) {
+    // this.currentItems = this.items.query();
   }
 
   /**
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
+    this.getJobs();
   }
 
+  getJobs() {
+    this.jobInf.getJobs().subscribe(list => {
+      this.currentJobs = list;
+    })
+  }
   /**
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
    * modal and then adds the new item to our data source if the user created one.
@@ -46,9 +54,9 @@ export class ListMasterPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openItem(jobId) {
     this.navCtrl.push('ItemDetailPage', {
-      item: item
+      jobId: jobId
     });
   }
 }

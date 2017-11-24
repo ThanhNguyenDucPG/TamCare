@@ -1,7 +1,7 @@
+import { JobInformationProvider } from './../../providers/job-information/job-information';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Items } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -9,10 +9,14 @@ import { Items } from '../../providers/providers';
   templateUrl: 'item-detail.html'
 })
 export class ItemDetailPage {
-  item: any;
+  jobId: any;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {
-    this.item = navParams.get('item') || items.defaultItem;
+  constructor(public navCtrl: NavController, navParams: NavParams, public jobInf: JobInformationProvider) {
+    this.jobId = navParams.get('jobId');
+    this.jobInf.getJobDetail(this.jobId).subscribe(jobDetail => {
+      console.log(jobDetail);
+    })
+
   }
 
 }

@@ -24,11 +24,11 @@ export class ItemCreatePage {
     this.form = formBuilder.group({
       // profilePic: [''],
       title: ['', Validators.required],
-      workplace: [''],
-      date: [''],
-      timeFrom: [''],
-      timeTo: [''],
-      price: [''],
+      workplace: ['', Validators.required],
+      date: ['', Validators.required],
+      timeFrom: ['', Validators.required],
+      timeTo: ['', Validators.required],
+      price: ['', Validators.required],
       description: ['']
     });
 
@@ -43,6 +43,7 @@ export class ItemCreatePage {
   }
 
   createItem(){
+    if (!this.form.valid) { return; }
     let data = {
       title: this.form.value.title,
       workplace: this.form.value.workplace,
@@ -54,7 +55,7 @@ export class ItemCreatePage {
       count: 0
     }
     this.jobInf.createItem(data).then(res =>{
-      debugger
+      this.viewCtrl.dismiss(this.form.value);
     })
   }
   // getPicture() {
