@@ -16,20 +16,27 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let item of currentJobs">
-      <button ion-item (click)="openItem(item.key)">
+      <div ion-item >
         <!-- <ion-avatar item-start>
           <img [src]="item.profilePic" />
         </ion-avatar> -->
         <h2>{{item.title}}</h2>
         <p>{{item.workplace}}</p>
-        <ion-note item-end *ngIf="item.price">{{item.price}}</ion-note>
-      </button>
+        <ion-note item-end *ngIf="item.price">
+          <p>{{item.price}}</p>
+          <p>No. selected: {{item.count}}</p>
+        </ion-note>
+        <button (click)="selectJob(item.key, item.count)" *ngIf="!item.selected">Select</button>
+        <button (click)="unSelectJob(item.key, item.count)" *ngIf="item.selected">Selected</button>
+        <button (click)="openItem(item.key)">Detail job</button>
+        <!-- <p>Upload by{{}} at {{}}</p> -->
+      </div>
 
-      <ion-item-options>
+      <!-- <ion-item-options>
         <button ion-button color="danger" (click)="deleteItem(item)">
           {{ 'DELETE_BUTTON' | translate }}
         </button>
-      </ion-item-options>
+      </ion-item-options> -->
     </ion-item-sliding>
   </ion-list>
 </ion-content>

@@ -32,10 +32,37 @@ export class JobInformationProvider {
     });
   }
 
-  getJobDetail(jobId){
+  getJobDetail(jobId) {
     return this.afDB.object(`jobInformation/${jobId}`).valueChanges();
   }
 
+  getManageJobs() {
+    return this.afDB.list(`jobInformation`, ref => ref.orderByChild('userId').equalTo(this.userId)).snapshotChanges().map(actions => {
+      return actions.map(action => ({ key: action.key, ...action.payload.val() }))
+    })
+  }
+
+  getListFav() {
+    return this.afDB.object(`userProfile/${this.userId}/listFav`).valueChanges();
+    // .subscribe(listFav =>{
+    //   for(let key in listFav){
+    //     console.log(key)
+    //     console.log(listFav[key])
+    //   }
+    // });
+  }
+
+  selectJob(id, countSelected) {
+    this.afDB.object('/jobInformation/' + id).update({ count: countSelected + 1 });
+    this.afDB.list('/jobInformation/' + id + '/listSelected/').update(this.userId, { userId: this.userId });
+    this.afDB.list('/userProfile/' + this.userId + '/listFav/').update(id, { userId: id });
+  }
+
+  unSelectJob(id, countSelected) {
+    this.afDB.object('/jobInformation/' + id).update({ count: countSelected - 1 });
+    this.afDB.list('/jobInformation/' + id + '/listSelected/').remove(this.userId);
+    this.afDB.list('/userProfile/' + this.userId + '/listFav/').remove(id);
+  }
   // checkUser(){
   //   this.user = this.userProvider.authState.subscribe(res => {
   //     if (res) {
@@ -46,9 +73,15 @@ export class JobInformationProvider {
   //   })
   // }
 
+  editItem(id, jobInf) {
+    return this.afDB.object(`jobInformation/` + id).update(jobInf);
+  }
+
   createItem(jobInf) {
-    jobInf.userId = this.userId;
-    // this.userId = this.checkUser();
     return this.afDB.list(`jobInformation`).push(jobInf);
+  }
+
+  deleteItem(jobId) {
+    this.afDB.list('/jobInformation/').remove(jobId);
   }
 }

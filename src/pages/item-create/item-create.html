@@ -7,7 +7,7 @@
         <span color="primary">
           {{ 'CANCEL_BUTTON' | translate }}
         </span>
-        <!-- <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
@@ -15,7 +15,7 @@
         <span color="primary">
           {{ 'DONE_BUTTON' | translate }}
         </span>
-        <!-- <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon> -->
+        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -50,15 +50,19 @@
       </ion-item>
       <ion-item>
         <ion-label>Time From</ion-label>
-        <ion-datetime displayFormat="HH:mm" displayFormat="HH:mm" placeholder="{{ 'ITEM_TIME_FROM_PLACEHOLDER' | translate }}" formControlName="timeFrom"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm" placeholder="{{ 'ITEM_TIME_FROM_PLACEHOLDER' | translate }}" formControlName="timeFrom"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Time To</ion-label>
-        <ion-datetime displayFormat="HH:mm" displayFormat="HH:mm" placeholder="{{ 'ITEM_TIME_TO_PLACEHOLDER' | translate }}" formControlName="timeTo"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm" placeholder="{{ 'ITEM_TIME_TO_PLACEHOLDER' | translate }}" formControlName="timeTo"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Price</ion-label>
         <ion-input type="number" placeholder="{{ 'ITEM_PRICE_PLACEHOLDER' | translate }}" formControlName="price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone Number</ion-label>
+        <ion-input type="number" placeholder="{{ 'ITEM_PHONE_NUMBER_PLACEHOLDER' | translate }}" formControlName="phoneNumber"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Description</ion-label>

@@ -29,6 +29,7 @@ export class ItemCreatePage {
       timeFrom: ['', Validators.required],
       timeTo: ['', Validators.required],
       price: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
       description: ['']
     });
 
@@ -51,6 +52,7 @@ export class ItemCreatePage {
       timeFrom: this.form.value.timeFrom,
       timeTo: this.form.value.timeTo,
       price: this.form.value.price,
+      phoneNumber: this.form.value.phoneNumber,
       description: this.form.value.description,
       count: 0
     }

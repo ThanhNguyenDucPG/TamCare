@@ -1,18 +1,25 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title></ion-title>
+    <ion-title *ngIf="jobDetail">{{jobDetail.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' +  + ')'">
-  </div>
+<ion-content *ngIf="jobDetail">
+  <!-- <div class="item-profile" text-center #profilePic [style.background-image]="'url(' +  + ')'">
+  </div> -->
 
   <div class="item-detail" padding>
-    <h2></h2>
-    <p></p>
+    <h2>{{jobDetail.workplace}}</h2>
+    <p>{{jobDetail.date}}</p>
+    <div>
+      <p>{{jobDetail.timeFrom}}</p>
+      <p>{{jobDetail.timeTo}}</p>      
+    </div>
+    <h2>{{jobDetail.price}} VND</h2>
+    <h2>{{jobDetail.phoneNumber}}</h2>
+    <p>{{jobDetail.description}}</p>
   </div>
 </ion-content>

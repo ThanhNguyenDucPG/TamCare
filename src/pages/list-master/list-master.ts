@@ -11,7 +11,8 @@ import { Items } from '../../providers/providers';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  currentJobs: Item[];
+  currentJobs: any;
+  listFav: any;
 
   constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController,
     public jobInf: JobInformationProvider) {
@@ -28,7 +29,29 @@ export class ListMasterPage {
   getJobs() {
     this.jobInf.getJobs().subscribe(list => {
       this.currentJobs = list;
+      this.getListFav();
     })
+  }
+
+  getListFav() {
+    this.listFav = [];
+    this.jobInf.getListFav().subscribe(listFav => {
+      for (let key in listFav) {
+        let findJob = this.currentJobs.findIndex(x=>x.key == key);
+        let checkJob = this.listFav.findIndex(x=>x.key == key)
+        if(findJob >= 0 && checkJob < 0){
+          this.currentJobs[findJob].selected = true;
+        }
+      }
+    });
+  }
+
+  selectJob(keyId, count){
+    this.jobInf.selectJob(keyId, count)
+  }
+
+  unSelectJob(keyId, count){
+    this.jobInf.unSelectJob(keyId, count)
   }
   /**
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
@@ -36,11 +59,11 @@ export class ListMasterPage {
    */
   addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-      }
-    })
+    // addModal.onDidDismiss(item => {
+    //   if (item) {
+    //     this.items.add(item);
+    //   }
+    // })
     addModal.present();
   }
 

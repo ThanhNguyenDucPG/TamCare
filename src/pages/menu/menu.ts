@@ -1,3 +1,4 @@
+import { User } from './../../providers/user/user';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
 
@@ -14,7 +15,7 @@ export class MenuPage {
 
   pages: Array<{ title: string, component: any }>;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public user: User) {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Sign in', component: 'LoginPage' },
@@ -25,6 +26,13 @@ export class MenuPage {
   ionViewDidLoad() {
     console.log('Hello MenuPage Page');
   }
+
+
+ logout(){
+  this.user.logout().then((res) =>{
+    console.log(res);
+  })
+ }
 
   openPage(page) {
     // Reset the content nav to have just this page

@@ -59,6 +59,9 @@ export class User {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
+  logout(){
+    return this.afAuth.auth.signOut();
+  }
   /**
    * Log the user out, which forgets the session
    */
