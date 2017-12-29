@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Manage Your Posts
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of manageJobs">
+        <div ion-item >
+          <!-- <ion-avatar item-start>
+            <img [src]="item.profilePic" />
+          </ion-avatar> -->
+          <h2>{{item.title}}</h2>
+          <p>{{item.workplace}}</p>
+          <ion-note item-end *ngIf="item.price">
+            <p>{{item.price}}</p>
+            <p>No. selected: {{item.count}}</p>
+            <a href="">See more</a>
+          </ion-note>
+          <button (click)="editItem(item.key)">Edit</button>
+          <button (click)="openItem(item.key)">Detail job</button>
+        </div>
+
+        <ion-item-options>
+          <button ion-button color="danger" (click)="deleteItem(item.key)">
+            {{ 'DELETE_BUTTON' | translate }}
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
