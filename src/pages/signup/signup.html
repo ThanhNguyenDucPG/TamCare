@@ -52,6 +52,11 @@
         </ion-row>
       </div>
 
+      <ion-item class="input-text upload-avatar">
+        <button type="button" ion-button (click)="chooseAvatar()">Upload Avatar</button>
+        <img class="avatar-upload" src="assets/img/marty-avatar.png"/>
+      </ion-item>
+
       <ion-item class="input-text">
         <ion-label><ion-icon name="md-call"></ion-icon></ion-label>
         <ion-input type="tel" [(ngModel)]="account.phone" name="phone" placeholder="Phone"></ion-input>

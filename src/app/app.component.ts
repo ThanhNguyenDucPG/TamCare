@@ -14,7 +14,7 @@ import { Settings } from '../providers/providers';
     <ion-header color="green">
       <img src="assets/img/marty-avatar.png"/>
       <p class="name">Nguyễn Song Hào</p>
-      <div class="btn-edit">Edit <ion-icon name="md-create"></ion-icon></div>
+      <div class="btn-edit" menuClose (click)="goProfile()">Edit <ion-icon name="md-create"></ion-icon></div>
     </ion-header>
 
     <ion-content>
@@ -101,5 +101,9 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  goProfile () {
+    this.nav.push('ProfilePage');
   }
 }

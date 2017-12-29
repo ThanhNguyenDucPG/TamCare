@@ -1,7 +1,7 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, ActionSheetController  } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
@@ -30,7 +30,8 @@ export class SignupPage {
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-    public afDb: AngularFireDatabase) {
+    public afDb: AngularFireDatabase,
+    public actionSheetController: ActionSheetController) {
 
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
@@ -63,5 +64,35 @@ export class SignupPage {
 
   changeSex (sex) {
     this.account.sex = sex ? "Male" : "Famale"
+  }
+
+  chooseAvatar () {
+    let actionSheet = this.actionSheetController.create({
+     title: 'Choose avatar',
+     buttons: [
+       {
+         text: 'Get picture from gallery',
+         role: 'destructive',
+         handler: () => {
+           console.log('Destructive clicked');
+         }
+       },
+       {
+         text: 'Capture picture',
+         handler: () => {
+           console.log('Archive clicked');
+         }
+       },
+       {
+         text: 'Cancel',
+         role: 'cancel',
+         handler: () => {
+           console.log('Cancel clicked');
+         }
+       }
+     ]
+   });
+
+   actionSheet.present();
   }
 }
