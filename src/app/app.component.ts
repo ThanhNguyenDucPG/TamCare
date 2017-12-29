@@ -28,6 +28,7 @@ import { Settings } from '../providers/providers';
           Logout
         </button>
       </ion-list>
+      <div class="btn-phone">0975030714</div>
     </ion-content>
 
   </ion-menu>
@@ -45,6 +46,7 @@ export class MyApp {
     { title: 'Cards', component: 'CardsPage', img: 'card.png' },
     { title: 'Orders', component: 'OrdersPage', img: 'orders.png'},
     { title: 'Manage Posts', component: 'ManagePostsPage', img: 'post.png' },
+    { title: 'List User', component: 'UsersPage', img: 'users.png' },
     // { title: 'Login', component: 'LoginPage' },
     // { title: 'Signup', component: 'SignupPage' },
     { title: 'List Jobs', component: 'ListMasterPage', img: 'job.png' },
