@@ -59,4 +59,12 @@ ion-menu {
 	.item-inner {
 		border: none !important;
 	}
+	.btn-phone {
+		display: inline-block;
+	    background: #44b48e;
+	    padding: 10px 20px;
+	    color: white;
+	    border-radius: 20px;
+	    margin-left: calc(50% - 60px);
+	}
 }

@@ -15,10 +15,12 @@ export class SignupPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: {name: string, email: string, password: string } = {
+  account: {name: string, email: string, password: string, sex: string, sexStatus: boolean } = {
     name: '',
     email: '',
-    password: ''
+    password: '',
+    sex: "Male",
+    sexStatus: true
   };
 
   // Our translated text strings
@@ -57,5 +59,9 @@ export class SignupPage {
       });
       toast.present();
     });
+  }
+
+  changeSex (sex) {
+    this.account.sex = sex ? "Male" : "Famale"
   }
 }
