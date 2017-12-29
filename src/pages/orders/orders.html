@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Orders
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of listFav">
+      <div ion-item >
+        <!-- <ion-avatar item-start>
+          <img [src]="item.profilePic" />
+        </ion-avatar> -->
+        <h2>{{item.title}}</h2>
+        <p>{{item.workplace}}</p>
+        <ion-note item-end *ngIf="item.price">
+          <p>{{item.price}}</p>
+          <p>No. selected: {{item.count}}</p>
+        </ion-note>
+        <button (click)="unSelectJob(item.key, item.count)">Selected</button>
+        <button (click)="openItem(item.key)">Detail job</button>
+        <!-- <p>Upload by{{}} at {{}}</p> -->
+      </div>
+
+      <!-- <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options> -->
+    </ion-item-sliding>
+  </ion-list>
+  </ion-content>
