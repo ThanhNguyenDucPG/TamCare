@@ -27,6 +27,10 @@
     "@ionic/storage": "2.0.1",
     "@ngx-translate/core": "8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
+<<<<<<< HEAD
+=======
+    "angularfire2": "^5.0.0-rc.4",
+>>>>>>> 04ee3bdf9314f716435115be6a67c1277e721e15
     "firebase": "4.8.0",
     "ionic-angular": "3.8.0",
     "ionicons": "3.0.0",

@@ -24,3 +24,39 @@
 .clearfix {
 	clear: both;
 }
+
+ion-menu {
+	ion-header {
+		background: color($colors, green) !important; 
+		img {
+			border-radius: 50%;
+			float: left;
+			margin: 6px;
+			height: 70px;
+		}
+		.name {
+			color: white;
+			font-size: 16px;
+			margin-bottom: 0;
+		}
+		.btn-edit {
+			color: white;
+		    display: inline-block;
+		    padding: 4px 6px;
+		}
+	}
+
+	.icon-menu {
+		height: 20px;
+	    position: relative;
+	    top: 4px;
+	    margin-right: 4px;
+	}
+	.label {
+		font-size: 15px;
+    	color: #313131;
+	}
+	.item-inner {
+		border: none !important;
+	}
+}

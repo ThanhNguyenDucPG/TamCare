@@ -8,9 +8,9 @@
     <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
 
     <ion-buttons end>
-      <!-- <button ion-button icon-only (click)="addItem()">
-        <ion-icon name="add"></ion-icon>
-      </button> -->
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="md-search"></ion-icon>
       </button>
@@ -31,18 +31,18 @@
           <img src="assets/img/ian-avatar.png" class="avatar" />
           <!-- <h2>{{item.title}}</h2> -->
           <h2 class="user">Nguyễn Song Hào</h2>
-          <p class="time"><ion-icon name="ios-clock-outline"></ion-icon> 09:30 - 10:30</p>
-          <p class="time"><ion-icon name="md-calendar"></ion-icon> 24-12-2017</p>
+          <p class="time"><img src="assets/img/clock.png"> 09:30 - 10:30</p>
+          <p class="time"><img src="assets/img/calendar.png"> 24-12-2017</p>
         </div>
-        <div class="item-group-button" item-end *ngIf="item.price">
-          <p class="price text-primary">{{item.price}}</p>
-          <p>No. selected: {{item.count}}</p>
-        </div>
+        <p class="price" *ngIf="item.price">{{item.price | number}}đ</p>
         <div class="information">
           <p><span class="text-primary">Adress: </span>{{item.workplace}}</p>
           <p><span class="text-primary">Job: </span>{{item.title}}</p>
         </div>
         <div class="item-toolbar">
+          <button ion-button outline color="green" *ngIf="item.price">
+            No. selected: {{item.count}}
+          </button>
           <button ion-button outline color="green" (click)="selectJob(item.key, item.count)" *ngIf="!item.selected">Select</button>
           <button ion-button outline color="green" (click)="unSelectJob(item.key, item.count)" *ngIf="item.selected">Selected</button>
           <button ion-button outline color="green" (click)="openItem(item.key)">View More</button>

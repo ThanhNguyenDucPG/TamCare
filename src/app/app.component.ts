@@ -11,18 +11,22 @@ import { Settings } from '../providers/providers';
 
 @Component({
   template: `<ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
+    <ion-header color="green">
+      <img src="assets/img/marty-avatar.png"/>
+      <p class="name">Nguyễn Song Hào</p>
+      <div class="btn-edit">Edit <ion-icon name="md-create"></ion-icon></div>
     </ion-header>
 
     <ion-content>
       <ion-list>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <img class="icon-menu" src="assets/img/{{p.img}}"/>
           {{p.title}}
         </button>
-        <button menuClose ion-item (click)="logout()">Logout</button>
+        <button menuClose ion-item (click)="logout()">
+          <img class="icon-menu" src="assets/img/logout.png"/>
+          Logout
+        </button>
       </ion-list>
     </ion-content>
 
@@ -37,16 +41,16 @@ export class MyApp {
   pages: any[] = [
     // { title: 'Tutorial', component: 'TutorialPage' },
     // { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
-    { title: 'Orders', component: 'OrdersPage'},
-    { title: 'Manage Posts', component: 'ManagePostsPage' },
+    // { title: 'Tabs', component: 'TabsPage' },
+    { title: 'Cards', component: 'CardsPage', img: 'card.png' },
+    { title: 'Orders', component: 'OrdersPage', img: 'orders.png'},
+    { title: 'Manage Posts', component: 'ManagePostsPage', img: 'post.png' },
     // { title: 'Login', component: 'LoginPage' },
     // { title: 'Signup', component: 'SignupPage' },
-    { title: 'List Jobs', component: 'ListMasterPage' },
-    { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
+    { title: 'List Jobs', component: 'ListMasterPage', img: 'job.png' },
+    // { title: 'Menu', component: 'MenuPage' },
+    { title: 'Settings', component: 'SettingsPage', img: 'settings.png' },
+    { title: 'Search', component: 'SearchPage', img: 'search.png' }
   ]
 
   constructor(private translate: TranslateService, platform: Platform,
@@ -63,7 +67,7 @@ export class MyApp {
         if (user) {
           this.rootPage = 'TabsPage';
         } else {
-          this.rootPage = 'TutorialPage';
+          this.rootPage = 'LoginPage';
         }
       });
     });
