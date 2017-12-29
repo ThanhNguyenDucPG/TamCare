@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -17,12 +17,12 @@ export class DataProvider {
 
   getDistrictByProvince (provinceid) {
   	return this.http.get('assets/json/district.json')
-    .map((res:Response) => res.json())
+    .map((res) => res.json())
     .map((data) => data.filter(item => item.provinceid == provinceid));
   }
 
   getProvince () {
   	return this.http.get('assets/json/province.json')
-    .map((res:Response) => res.json());
+    .map((res) => res.json());
   }
 }

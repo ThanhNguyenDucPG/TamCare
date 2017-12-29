@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="green">
     <ion-title>{{ 'SEARCH_TITLE' | translate }}</ion-title>
   </ion-navbar>
 
@@ -19,4 +19,27 @@
       <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
     </button>
   </ion-list>
+  <ion-list>
+  <ion-item>
+    <ion-label>Province</ion-label>
+    <ion-select [(ngModel)]="province" (ionChange)="selectProvince(province)">
+      <ion-option value="{{province.provinceid}}" *ngFor="let province of provinces">{{province.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>District</ion-label>
+    <ion-select [(ngModel)]="district">
+      <ion-option value="{{district.districtid}}" *ngFor="let district of districts">{{district.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>From</ion-label>
+    <ion-input type="tel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>To</ion-label>
+    <ion-input type="tel"></ion-input>
+  </ion-item>
+</ion-list>
 </ion-content>

@@ -64,12 +64,11 @@ export class MyApp {
       this.splashScreen.hide();
 
       user.authState.subscribe(user => {
-        /*if (user) {
+        if (user) {
           this.rootPage = 'TabsPage';
         } else {
           this.rootPage = 'LoginPage';
-        }*/
-        this.rootPage = 'LoginPage';
+        }
       });
     });
     this.initTranslate();

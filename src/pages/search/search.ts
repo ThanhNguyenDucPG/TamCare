@@ -13,10 +13,16 @@ import { DataProvider } from '../../providers/data/data';
 export class SearchPage {
 
   currentItems: any = [];
+  province: String;
+  district: String;
+  provinces: Array<Object> = [];
+  districts: Array<Object> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items, public dataProvider: DataProvider) {
-    dataProvider.getDistrictByProvince("01").subscribe(data => {
-      console.log(data);
+    dataProvider.getProvince().subscribe(data => {
+      this.provinces = data;
+      this.province = "01";
+      this.loadDistrict(this.province);
     })
   }
 
@@ -42,5 +48,16 @@ export class SearchPage {
       item: item
     });
   }
+
+  selectProvince (province: String) {
+    this.loadDistrict(province);
+  }
+
+  loadDistrict (provinceId: String) {
+    this.dataProvider.getDistrictByProvince(provinceId).subscribe(data => {
+      this.districts = data;
+      this.district = data[0]['districtid'];
+    })
+  } 
 
 }
