@@ -1,22 +1,22 @@
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="green">
     <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content>
   <form (submit)="doSignup()">
+    <!-- <div class="logo" color="green">
+      <p>Student Work</p>
+      <img src="assets/img/student.png">
+    </div> -->
     <ion-list>
 
       <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+        <ion-label><ion-icon name="md-contact"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name" placeholder="Full name"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
       </ion-item>
@@ -24,6 +24,51 @@
       <ion-item>
         <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item> -->
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-mail"></ion-icon></ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-key"></ion-icon></ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" placeholder="Password"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-key"></ion-icon></ion-label>
+        <ion-input type="password" [(ngModel)]="account.passwordConfirm" name="passwordConfirm" placeholder="Password confirm"></ion-input>
+      </ion-item>
+
+      <div class="item item-custom">
+        <ion-row>
+          <ion-col>
+            <ion-label>Male</ion-label>
+            <ion-toggle [(ngModel)]="account.sex" name="sex"></ion-toggle>
+          </ion-col>
+          <ion-col>
+            <ion-input type="tel" [(ngModel)]="account.age" name="age" placeholder="Age"></ion-input>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-call"></ion-icon></ion-label>
+        <ion-input type="tel" [(ngModel)]="account.phone" name="phone" placeholder="Phone"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-bookmarks"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="account.school" name="school" placeholder="School"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-label><ion-icon name="md-map"></ion-icon></ion-label>
+        <ion-input type="text" [(ngModel)]="account.address" name="address" placeholder="Address"></ion-input>
+      </ion-item>
+
+      <ion-item class="input-text">
+        <ion-textarea [(ngModel)]="account.description" row="6" name="description" placeholder="Description"></ion-textarea>
       </ion-item>
 
       <div padding>

@@ -65,13 +65,14 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      user.authState.subscribe(user => {
-        if (user) {
-          this.rootPage = 'TabsPage';
-        } else {
-          this.rootPage = 'LoginPage';
-        }
-      });
+      // user.authState.subscribe(user => {
+      //   if (user) {
+      //     this.rootPage = 'TabsPage';
+      //   } else {
+      //     this.rootPage = 'LoginPage';
+      //   }
+      // });
+      this.rootPage = 'SignupPage';
     });
     this.initTranslate();
   }
