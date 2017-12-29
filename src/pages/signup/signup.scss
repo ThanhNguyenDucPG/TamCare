@@ -31,6 +31,7 @@ page-signup {
 		border-bottom: 1px solid #ddd;
 		ion-label {
 			font-size: 16px;
+			width: 60px;
 		}
 		input {
 			border: 1px solid #ddd;
@@ -40,8 +41,8 @@ page-signup {
 		    font-size: 16px;
 		    border-radius: 4px;
 		}
-		ion-toogle {
-			margin-top: 4px;
+		ion-toggle {
+			margin-top: 4px !important;
 		}
 	}
 }
